@@ -1,0 +1,46 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body { @apply bg-bg font-sans text-sm text-[#e8eef6]; }
+  button { @apply cursor-pointer; }
+  select, input, textarea { @apply w-full rounded-lg border border-line bg-[#0b1726] p-2 focus:outline-2 focus:outline-electric; }
+}
+@layer components {
+  .card { @apply rounded-xl border border-line bg-card p-3.5; }
+  .btn { @apply rounded-lg bg-lime px-3.5 py-2 font-bold text-bg transition hover:-translate-y-px hover:brightness-110; }
+  .btn-g { @apply rounded-lg border border-line bg-soft px-3.5 py-2 font-semibold transition hover:border-lime; }
+  .btn-s { @apply px-2.5 py-1.5 text-xs; }
+  .tag { @apply rounded-full bg-[#1a2c42] px-2 py-0.5 text-[11px]; }
+  .chip { @apply rounded-full border border-line bg-[#0b1726] px-3 py-1 text-xs text-mu transition; }
+  .chip-on { @apply border-lime bg-lime text-bg; }
+  .lbl { @apply mb-1 block text-xs text-mu; }
+}
+
+/* Mapa */
+.leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(.85) contrast(.9) saturate(.6); }
+.leaflet-container { background: #09182a; font-family: inherit; }
+.pin { width: 28px; height: 28px; border-radius: 50% 50% 50% 4px; transform: rotate(-45deg); border: 2px solid #fff; box-shadow: 0 0 14px currentColor; }
+.pin i { display: grid; place-items: center; height: 100%; transform: rotate(45deg); color: #07111F; }
+.city-label { color: #8fa3b8; font-size: 11px; white-space: nowrap; text-shadow: 0 0 4px #07111F, 0 0 4px #07111F; transform: translate(8px, -6px); }
+.route { stroke-dasharray: 10 8; animation: dash 1s linear infinite; }
+@keyframes dash { to { stroke-dashoffset: -18; } }
+.leaflet-popup-content-wrapper, .leaflet-popup-tip { background: #101D2B; color: #e8eef6; border: 1px solid #A8F000; }
+.leaflet-popup-content-wrapper { border-radius: 12px; }
+.leaflet-popup-content { margin: 10px 12px; min-width: 190px; }
+.leaflet-popup-close-button { color: #8fa3b8 !important; }
+.leaflet-control-attribution { background: #07111Fcc !important; color: #8fa3b8 !important; }
+.leaflet-control-attribution a { color: #8fa3b8 !important; }
+/* Vehículos en vivo */
+.car-wrap { position: relative; width: 34px; height: 34px; display: grid; place-items: center; }
+.car-pulse { position: absolute; inset: 3px; border-radius: 50%; background: #A8F00033; animation: pulse 1.8s ease-out infinite; }
+@keyframes pulse { from { transform: scale(.6); opacity: 1; } to { transform: scale(1.6); opacity: 0; } }
+.car { display: grid; place-items: center; filter: drop-shadow(0 2px 3px #000b); }
+@keyframes toast-in { from { opacity: 0; transform: translateX(30px); } }
+.toast { animation: toast-in .3s; }
+@media (max-width: 639px) {
+  select, input, textarea { font-size: 16px; }
+  button { touch-action: manipulation; }
+}
+@media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important; } }
